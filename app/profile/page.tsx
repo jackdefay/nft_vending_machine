@@ -7,8 +7,8 @@ export default function Home() {
       <div className="topnav">
         <div className="topnav-left">
           <ul>
-            <li><a className="active" href="/">Home</a></li>
-            <li><a href="/profile">My NFTs</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a className="active" href="/profile">My NFTs</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="#about">About</a></li>
           </ul>
