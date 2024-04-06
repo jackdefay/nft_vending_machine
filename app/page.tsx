@@ -2,9 +2,7 @@
 
 import Link from 'next/link'
 import Image from "next/image";
-import { showConnect } from '@stacks/connect';
-// import { onClick } from '@stacks/connect-react';
-
+import { showConnect } from './index.js';
 
 export default function Home() {
   return (
