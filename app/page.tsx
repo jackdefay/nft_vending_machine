@@ -14,6 +14,9 @@ import { openContractCall } from '@stacks/connect';
 import { StacksTestnet } from '@stacks/network';
 import { AnchorMode, PostConditionMode, stringUtf8CV } from '@stacks/transactions';
 
+import fetch from 'cross-fetch';
+import { Configuration, AccountsApi } from '@stacks/blockchain-api-client';
+
 
 
 
@@ -89,3 +92,23 @@ export function Button2(){
   })
   )
 }
+
+
+(async () => {
+  const apiConfig = new Configuration({
+    fetchApi: fetch,
+    // for mainnet, replace `testnet` with `mainnet`
+    basePath: 'https://api.testnet.hiro.so', // defaults to http://localhost:3999
+  });
+
+  // initiate the /accounts API with the basepath and fetch library
+  const accountsApi = new AccountsApi(apiConfig);
+
+  // get transactions for a specific account
+  const txs = await accountsApi.getAccountTransactions({
+    principal: 'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
+  });
+  // generous-rose-turkey
+
+  console.log(txs);
+})().catch(console.error);
