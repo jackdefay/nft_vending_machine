@@ -51,7 +51,7 @@ export default function Home() {
       <h1 className="text-5xl font-bold title text-center">NFT Vending Machine</h1>
 
       <h2 className="text-2xl font-bold title text-center">
-        <button onClick={Button2}>Dispense NFT</button>
+        <button onClick={Button4}>Dispense NFT</button>
       </h2>
 
     </main>
@@ -75,7 +75,7 @@ export function Button1(){
 }
 
 export function Button2(){
-  const pick = stringUtf8CV('Alice');
+  // const pick = stringUtf8CV('Alice');
 
   return (
     openContractCall({
@@ -151,42 +151,68 @@ export function Button2(){
 // }
 
 
-async function Button3() {
-  // for mainnet, use `StacksMainnet()`
-  const network = new StacksTestnet();
+// async function Button3() {
+//   // for mainnet, use `StacksMainnet()`
+//   const network = new StacksTestnet();
 
-  const arg = new Uint8Array([32]);
+//   const arg = new Uint8Array([32]);
   
-  // Add an optional post condition
-  // See below for details on constructing post conditions
-  const postConditionAddress = 'SP2ZD731ANQZT6J4K3F5N8A40ZXWXC1XFXHVVQFKE';
-  const postConditionCode = FungibleConditionCode.GreaterEqual;
-  const postConditionAmount = 1000000;
-  const postConditions = [
-    makeStandardSTXPostCondition(postConditionAddress, postConditionCode, postConditionAmount),
-  ];
+//   // Add an optional post condition
+//   // See below for details on constructing post conditions
+//   const postConditionAddress = 'SP2ZD731ANQZT6J4K3F5N8A40ZXWXC1XFXHVVQFKE';
+//   const postConditionCode = FungibleConditionCode.GreaterEqual;
+//   const postConditionAmount = 1000000;
+//   const postConditions = [
+//     makeStandardSTXPostCondition(postConditionAddress, postConditionCode, postConditionAmount),
+//   ];
   
-  const txOptions = {
+//   const txOptions = {
+//     contractAddress: 'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
+//     contractName: 'generous-rose-turkey',
+//     functionName: 'get-value',
+//     functionArgs: [bufferCV(arg)], //[bufferCVFromString('foo')],
+//     senderKey: 'b244296d5907de9864c0b0d51f98a13c52890be0404e83f273144cd5b9960eed01',
+//     validateWithAbi: true,
+//     network,
+//     postConditions,
+//     anchorMode: AnchorMode.Any,
+//   };
+  
+//   const transaction = await makeContractCall(txOptions);
+
+//   console.log('A');
+  
+//   const broadcastResponse = await broadcastTransaction(transaction, network);
+//   const txId = broadcastResponse.txid;
+
+//   console.log(txId);
+//   console.log(broadcastResponse);
+
+//   return broadcastResponse;
+// }
+
+export function Button4(){
+
+
+  return (
+    openContractCall({
+    network: new StacksTestnet(),
+    anchorMode: AnchorMode.Any, // which type of block the tx should be mined in
+
     contractAddress: 'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
-    contractName: 'generous-rose-turkey',
-    functionName: 'get-value',
-    functionArgs: [bufferCV(arg)], //[bufferCVFromString('foo')],
-    senderKey: 'b244296d5907de9864c0b0d51f98a13c52890be0404e83f273144cd5b9960eed01',
-    validateWithAbi: true,
-    network,
-    postConditions,
-    anchorMode: AnchorMode.Any,
-  };
-  
-  const transaction = await makeContractCall(txOptions);
+    contractName: 'deafening-gold-stork',
+    functionName: 'claim',
+    functionArgs: [], // arguments to the contract function
 
-  console.log('A');
-  
-  const broadcastResponse = await broadcastTransaction(transaction, network);
-  const txId = broadcastResponse.txid;
+    postConditionMode: PostConditionMode.Deny, // whether the tx should fail when unexpected assets are transferred
+    postConditions: [], // for an example using post-conditions, see next example
 
-  console.log(txId);
-  console.log(broadcastResponse);
-
-  return broadcastResponse;
+    onFinish: response => {
+      // WHEN user confirms pop-up
+    },
+    onCancel: () => {
+      // WHEN user cancels/closes pop-up
+    },
+  })
+  )
 }
