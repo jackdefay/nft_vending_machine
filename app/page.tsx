@@ -59,7 +59,7 @@ export default function Home() {
 }
 
 
-export function Button1(){
+function Button1(){
   return ( showConnect({
     userSession, // `userSession` from previous step, to access storage
     appDetails: {
@@ -74,7 +74,7 @@ export function Button1(){
     },}))
 }
 
-export function Button2(){
+function Button2(){
   // const pick = stringUtf8CV('Alice');
 
   return (
@@ -191,7 +191,7 @@ export function Button2(){
 //   return broadcastResponse;
 // }
 
-export function Button4(){
+function Button4(){
 
 
   return (
