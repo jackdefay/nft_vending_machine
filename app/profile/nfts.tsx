@@ -20,7 +20,7 @@ import { useEffect } from 'react';
 
 import md5 from 'md5';
 
-async function load_nfts() {
+export async function load_nfts() {
     console.log('loading nfts...')
   
     const apiConfig = new Configuration({
@@ -44,7 +44,7 @@ async function load_nfts() {
     document.getElementById("nfts")!.innerHTML = "completed: " + txs.results.toString();
   }
   
-  function render_nfts(id_list: string[]) {
+export function render_nfts(id_list: string[]) {
   
     const urls = [];
     const images = [];

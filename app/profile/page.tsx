@@ -20,6 +20,10 @@ import { useEffect } from 'react';
 
 import md5 from 'md5';
 
+import { load_nfts, render_nfts } from './nfts';
+import { Button1, Button2, Button4 } from './buttons';
+
+
 
 export default function Home() {
 
@@ -58,72 +62,72 @@ export default function Home() {
 }
 
 
-export function Button1(){
-  return ( showConnect({
-    userSession, // `userSession` from previous step, to access storage
-    appDetails: {
-      name: 'My Stacks Web-App',
-      icon: "/logo.png", // shown in wallet pop-up
-    },
-    onFinish: () => {
-      window.location.reload(); // WHEN user confirms pop-up
-    },
-    onCancel: () => {
-      console.log('oops'); // WHEN user cancels/closes pop-up
-    },}))
-}
+// export function Button1(){
+//   return ( showConnect({
+//     userSession, // `userSession` from previous step, to access storage
+//     appDetails: {
+//       name: 'My Stacks Web-App',
+//       icon: "/logo.png", // shown in wallet pop-up
+//     },
+//     onFinish: () => {
+//       window.location.reload(); // WHEN user confirms pop-up
+//     },
+//     onCancel: () => {
+//       console.log('oops'); // WHEN user cancels/closes pop-up
+//     },}))
+// }
 
-export function Button2(){
-  // const pick = stringUtf8CV('Alice');
+// export function Button2(){
+//   // const pick = stringUtf8CV('Alice');
 
-  return (
-    openContractCall({
-    network: new StacksTestnet(),
-    anchorMode: AnchorMode.Any, // which type of block the tx should be mined in
+//   return (
+//     openContractCall({
+//     network: new StacksTestnet(),
+//     anchorMode: AnchorMode.Any, // which type of block the tx should be mined in
 
-    contractAddress: 'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
-    contractName: 'generous-rose-turkey',
-    functionName: 'get-value',
-    functionArgs: [bufferCVFromString('test')], // arguments to the contract function
+//     contractAddress: 'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
+//     contractName: 'generous-rose-turkey',
+//     functionName: 'get-value',
+//     functionArgs: [bufferCVFromString('test')], // arguments to the contract function
 
-    postConditionMode: PostConditionMode.Deny, // whether the tx should fail when unexpected assets are transferred
-    postConditions: [], // for an example using post-conditions, see next example
+//     postConditionMode: PostConditionMode.Deny, // whether the tx should fail when unexpected assets are transferred
+//     postConditions: [], // for an example using post-conditions, see next example
 
-    onFinish: response => {
-      // WHEN user confirms pop-up
-    },
-    onCancel: () => {
-      // WHEN user cancels/closes pop-up
-    },
-  })
-  )
-}
+//     onFinish: response => {
+//       // WHEN user confirms pop-up
+//     },
+//     onCancel: () => {
+//       // WHEN user cancels/closes pop-up
+//     },
+//   })
+//   )
+// }
 
-export function Button4(){
+// export function Button4(){
 
 
-  return (
-    openContractCall({
-    network: new StacksTestnet(),
-    anchorMode: AnchorMode.Any, // which type of block the tx should be mined in
+//   return (
+//     openContractCall({
+//     network: new StacksTestnet(),
+//     anchorMode: AnchorMode.Any, // which type of block the tx should be mined in
 
-    contractAddress: 'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
-    contractName: 'deafening-gold-stork',
-    functionName: 'claim',
-    functionArgs: [], // arguments to the contract function
+//     contractAddress: 'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
+//     contractName: 'deafening-gold-stork',
+//     functionName: 'claim',
+//     functionArgs: [], // arguments to the contract function
 
-    postConditionMode: PostConditionMode.Deny, // whether the tx should fail when unexpected assets are transferred
-    postConditions: [], // for an example using post-conditions, see next example
+//     postConditionMode: PostConditionMode.Deny, // whether the tx should fail when unexpected assets are transferred
+//     postConditions: [], // for an example using post-conditions, see next example
 
-    onFinish: response => {
-      // WHEN user confirms pop-up
-    },
-    onCancel: () => {
-      // WHEN user cancels/closes pop-up
-    },
-  })
-  )
-}
+//     onFinish: response => {
+//       // WHEN user confirms pop-up
+//     },
+//     onCancel: () => {
+//       // WHEN user cancels/closes pop-up
+//     },
+//   })
+//   )
+// }
 
 
 
@@ -150,44 +154,44 @@ export function Button4(){
 // })().catch(console.error);
 
 
-async function load_nfts() {
-  console.log('loading nfts...')
+// async function load_nfts() {
+//   console.log('loading nfts...')
 
-  const apiConfig = new Configuration({
-    fetchApi: fetch,
-    // for mainnet, replace `testnet` with `mainnet`
-    basePath: 'https://api.testnet.hiro.so', // defaults to http://localhost:3999
-  });
+//   const apiConfig = new Configuration({
+//     fetchApi: fetch,
+//     // for mainnet, replace `testnet` with `mainnet`
+//     basePath: 'https://api.testnet.hiro.so', // defaults to http://localhost:3999
+//   });
 
-  // initiate the /accounts API with the basepath and fetch library
-  const accountsApi = new AccountsApi(apiConfig);
+//   // initiate the /accounts API with the basepath and fetch library
+//   const accountsApi = new AccountsApi(apiConfig);
 
-  // get transactions for a specific account
-  const txs = await accountsApi.getAccountAssets({
-    principal: 'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
-    limit: 10,
-    unanchored: true,
-  });
+//   // get transactions for a specific account
+//   const txs = await accountsApi.getAccountAssets({
+//     principal: 'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
+//     limit: 10,
+//     unanchored: true,
+//   });
 
-  console.log(txs);
+//   console.log(txs);
 
-  document.getElementById("nfts")!.innerHTML = "completed: " + txs.results.toString();
-}
+//   document.getElementById("nfts")!.innerHTML = "completed: " + txs.results.toString();
+// }
 
-function render_nfts(id_list: string[]) {
+// function render_nfts(id_list: string[]) {
 
-  const urls = [];
-  const images = [];
+//   const urls = [];
+//   const images = [];
   
-  for (let i = 0; i < id_list.length; i++) { 
-    const emailHash = md5(id_list[i]);
-    urls.push(`https://www.gravatar.com/avatar/${emailHash}`);
-    images.push(<img key={i} src={urls[i]} alt="gallery" className="block object-cover object-center w-full h-full rounded-lg"/>);
-  }
+//   for (let i = 0; i < id_list.length; i++) { 
+//     const emailHash = md5(id_list[i]);
+//     urls.push(`https://www.gravatar.com/avatar/${emailHash}`);
+//     images.push(<img key={i} src={urls[i]} alt="gallery" className="block object-cover object-center w-full h-full rounded-lg"/>);
+//   }
 
-  const image_html = images.join('');
+//   const image_html = images.join('');
 
-  document.getElementById("nft_images")!.innerHTML = image_html;
+//   document.getElementById("nft_images")!.innerHTML = image_html;
 
-  return urls;
-}
+//   return urls;
+// }
