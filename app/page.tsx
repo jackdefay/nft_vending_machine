@@ -26,6 +26,8 @@ import {
   bufferCV,
 } from '@stacks/transactions';
 
+import { Button1, Button4 } from './buttons';
+
 
 export default function Home() {
   return (
@@ -59,46 +61,46 @@ export default function Home() {
 }
 
 
-function Button1(){
-  return ( showConnect({
-    userSession, // `userSession` from previous step, to access storage
-    appDetails: {
-      name: 'My Stacks Web-App',
-      icon: "/logo.png", // shown in wallet pop-up
-    },
-    onFinish: () => {
-      window.location.reload(); // WHEN user confirms pop-up
-    },
-    onCancel: () => {
-      console.log('oops'); // WHEN user cancels/closes pop-up
-    },}))
-}
+// export function Button1(){
+//   return ( showConnect({
+//     userSession, // `userSession` from previous step, to access storage
+//     appDetails: {
+//       name: 'My Stacks Web-App',
+//       icon: "/logo.png", // shown in wallet pop-up
+//     },
+//     onFinish: () => {
+//       window.location.reload(); // WHEN user confirms pop-up
+//     },
+//     onCancel: () => {
+//       console.log('oops'); // WHEN user cancels/closes pop-up
+//     },}))
+// }
 
-function Button2(){
-  // const pick = stringUtf8CV('Alice');
+// export function Button2(){
+//   // const pick = stringUtf8CV('Alice');
 
-  return (
-    openContractCall({
-    network: new StacksTestnet(),
-    anchorMode: AnchorMode.Any, // which type of block the tx should be mined in
+//   return (
+//     openContractCall({
+//     network: new StacksTestnet(),
+//     anchorMode: AnchorMode.Any, // which type of block the tx should be mined in
 
-    contractAddress: 'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
-    contractName: 'generous-rose-turkey',
-    functionName: 'get-value',
-    functionArgs: [bufferCVFromString('test')], // arguments to the contract function
+//     contractAddress: 'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
+//     contractName: 'generous-rose-turkey',
+//     functionName: 'get-value',
+//     functionArgs: [bufferCVFromString('test')], // arguments to the contract function
 
-    postConditionMode: PostConditionMode.Deny, // whether the tx should fail when unexpected assets are transferred
-    postConditions: [], // for an example using post-conditions, see next example
+//     postConditionMode: PostConditionMode.Deny, // whether the tx should fail when unexpected assets are transferred
+//     postConditions: [], // for an example using post-conditions, see next example
 
-    onFinish: response => {
-      // WHEN user confirms pop-up
-    },
-    onCancel: () => {
-      // WHEN user cancels/closes pop-up
-    },
-  })
-  )
-}
+//     onFinish: response => {
+//       // WHEN user confirms pop-up
+//     },
+//     onCancel: () => {
+//       // WHEN user cancels/closes pop-up
+//     },
+//   })
+//   )
+// }
 
 // async function Button3(){
 //   // for mainnet, use `StacksMainnet()`
@@ -191,28 +193,28 @@ function Button2(){
 //   return broadcastResponse;
 // }
 
-function Button4(){
+// export function Button4(){
 
 
-  return (
-    openContractCall({
-    network: new StacksTestnet(),
-    anchorMode: AnchorMode.Any, // which type of block the tx should be mined in
+//   return (
+//     openContractCall({
+//     network: new StacksTestnet(),
+//     anchorMode: AnchorMode.Any, // which type of block the tx should be mined in
 
-    contractAddress: 'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
-    contractName: 'deafening-gold-stork',
-    functionName: 'claim',
-    functionArgs: [], // arguments to the contract function
+//     contractAddress: 'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
+//     contractName: 'deafening-gold-stork',
+//     functionName: 'claim',
+//     functionArgs: [], // arguments to the contract function
 
-    postConditionMode: PostConditionMode.Deny, // whether the tx should fail when unexpected assets are transferred
-    postConditions: [], // for an example using post-conditions, see next example
+//     postConditionMode: PostConditionMode.Deny, // whether the tx should fail when unexpected assets are transferred
+//     postConditions: [], // for an example using post-conditions, see next example
 
-    onFinish: response => {
-      // WHEN user confirms pop-up
-    },
-    onCancel: () => {
-      // WHEN user cancels/closes pop-up
-    },
-  })
-  )
-}
+//     onFinish: response => {
+//       // WHEN user confirms pop-up
+//     },
+//     onCancel: () => {
+//       // WHEN user cancels/closes pop-up
+//     },
+//   })
+//   )
+// }
