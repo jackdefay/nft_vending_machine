@@ -9,16 +9,8 @@ import { openContractCall } from '@stacks/connect';
 import { StacksTestnet } from '@stacks/network';
 import { AnchorMode, PostConditionMode} from '@stacks/transactions';
 
-import {
-  bufferCVFromString,
-} from '@stacks/transactions';
+import { bufferCVFromString } from '@stacks/transactions';
 
-import fetch from 'cross-fetch';
-import { Configuration, AccountsApi } from '@stacks/blockchain-api-client';
-import { useEffect } from 'react';
-
-
-import md5 from 'md5';
 
 export function Button1(){
     return ( showConnect({
