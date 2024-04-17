@@ -7,6 +7,18 @@ import { openContractCall } from '@stacks/connect';
 import { StacksTestnet } from '@stacks/network';
 import { AnchorMode, PostConditionMode, stringUtf8CV } from '@stacks/transactions';
 
+import {
+  makeContractCall,
+  broadcastTransaction,
+  NonFungibleConditionCode,
+  createAssetInfo,
+  makeContractNonFungiblePostCondition,
+  FungibleConditionCode,
+  makeStandardSTXPostCondition,
+  bufferCVFromString,
+  bufferCV,
+} from '@stacks/transactions';
+
 export function Button1(){
   return ( showConnect({
     userSession, // `userSession` from previous step, to access storage
