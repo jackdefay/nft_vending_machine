@@ -171,7 +171,7 @@ async function load_nfts() {
 
   console.log(txs);
 
-  document.getElementById("nfts")!.innerHTML ="completed: " + txs.results.toString();
+  document.getElementById("nfts")!.innerHTML = "completed: " + txs.results.toString();
 }
 
 function render_nfts(id_list: string[]) {
