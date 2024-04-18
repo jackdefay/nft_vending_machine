@@ -160,7 +160,7 @@ export function Button4(){
     anchorMode: AnchorMode.Any, // which type of block the tx should be mined in
 
     contractAddress: 'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
-    contractName: 'deafening-gold-stork',
+    contractName: 'tremendous-blue-gopher',
     functionName: 'claim',
     functionArgs: [], // arguments to the contract function
 
