@@ -1,5 +1,6 @@
 'use client';
 
+
 import Image from "next/image";
 
 import { showConnect } from '@stacks/connect';
@@ -39,25 +40,32 @@ export async function load_nfts() {
       unanchored: true,
     });
   
-    console.log(txs);
+    console.log("HELLOWORLD");
   
-    document.getElementById("nfts")!.innerHTML = "completed: " + txs.results.toString();
+    const values = []
+    for (const v in txs.results) {
+      values.push(txs.results[v].tx_id);
+      console.log(v);
+    }
+
+    document.getElementById("nfts")!.innerHTML = "completed: " + values;//Object.keys(txs.results[0]);
+
+    render_nfts(values);
   }
   
 export function render_nfts(id_list: string[]) {
-  
-    const urls = [];
-    const images = [];
     
     for (let i = 0; i < id_list.length; i++) { 
       const emailHash = md5(id_list[i]);
-      urls.push(`https://www.gravatar.com/avatar/${emailHash}`);
-      images.push(<img key={i} src={urls[i]} alt="gallery" className="block object-cover object-center w-full h-full rounded-lg"/>);
+      let url = `https://www.gravatar.com/avatar/${emailHash}`;
+      let element = '<img key={index} src={url} alt="gallery" className="block object-cover object-center w-full h-full rounded-lg"/>';
+      let elementString = element.replaceAll('{index}', i.toString());
+      elementString = elementString.replaceAll('{url}', url);
+      document.getElementById("nft_images")!.innerHTML += elementString;
     }
+    
+    // document.getElementById("nft_images")!.innerHTML = images[0];
+    // document.getElementById("img1")!.src = urls[0];
   
-    const image_html = images.join('');
-  
-    document.getElementById("nft_images")!.innerHTML = image_html;
-  
-    return urls;
-  }
+    return true;
+}

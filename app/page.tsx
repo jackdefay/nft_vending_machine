@@ -60,6 +60,8 @@ export default function Home() {
   );
 }
 
+console.log('hello');
+
 
 // export function Button1(){
 //   return ( showConnect({
