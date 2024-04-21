@@ -15,7 +15,7 @@ import {
 } from '@stacks/transactions';
 
 import fetch from 'cross-fetch';
-import { Configuration, AccountsApi } from '@stacks/blockchain-api-client';
+import { Configuration, AccountsApi, AddressAssetsListResponse } from '@stacks/blockchain-api-client';
 import { useEffect } from 'react';
 
 
@@ -41,17 +41,25 @@ export async function load_nfts() {
     });
   
     console.log("HELLOWORLD");
+
+    interface AssetResponse {
+      tx_id: string;
+    }
   
-    const values = []
-    for (const v in txs.results) {
-      values.push(txs.results[v].tx_id);
+    let values = []
+    for (let v = 0; v<txs.results.length; v++) {
+      let valueAsset: AssetResponse = {
+        tx_id: ''
+      };
+      let value = Object.assign(valueAsset,txs.results[v])
+      values.push(value.tx_id);
       console.log(v);
+      document.getElementById("nfts")!.innerHTML += "Asset: " + value.tx_id + "\n";
     }
 
-    document.getElementById("nfts")!.innerHTML = "completed: " + values;//Object.keys(txs.results[0]);
-
     render_nfts(values);
-  }
+  
+}
   
 export function render_nfts(id_list: string[]) {
     
