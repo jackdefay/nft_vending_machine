@@ -17,6 +17,7 @@ import {
 import fetch from 'cross-fetch';
 import { Configuration, AccountsApi, AddressAssetsListResponse } from '@stacks/blockchain-api-client';
 import { useEffect } from 'react';
+import { connectWebSocketClient } from '@stacks/blockchain-api-client';
 
 
 import md5 from 'md5';
@@ -32,10 +33,15 @@ export async function load_nfts() {
   
     // initiate the /accounts API with the basepath and fetch library
     const accountsApi = new AccountsApi(apiConfig);
+
+
+    // const client = await connectWebSocketClient('ws://api.hiro.so/');
   
+    const address = userSession.loadUserData().profile.stxAddress.testnet;
+
     // get transactions for a specific account
     const txs = await accountsApi.getAccountAssets({
-      principal: 'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
+      principal: address,//'ST13NS454WKV1X03E7VDQ990CFXFGCE5FZNRVE669',
       limit: 10,
       unanchored: true,
     });

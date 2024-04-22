@@ -10,7 +10,7 @@ import Image from "next/image";
 import { showConnect } from '@stacks/connect';
 import { userSession } from '../userSession';
 
-import { openContractCall } from '@stacks/connect';
+import { openContractCall, BlockstackProvider } from '@stacks/connect';
 import { StacksTestnet } from '@stacks/network';
 import { AnchorMode, PostConditionMode, stringUtf8CV } from '@stacks/transactions';
 
@@ -30,6 +30,14 @@ import { Button1, Button4 } from './buttons';
 
 
 export default function Home() {
+  // const address = userSession.loadUserData().profile.stxAddress;
+  // console.log(address);
+  let userAddress = '';
+  if (userSession.isUserSignedIn()) {
+    userAddress = userSession.loadUserData().profile.stxAddress.testnet
+    console.log(userAddress);
+  }
+
   return (
     <main className="flex min-h-screen flex-col p-24">
       <div className="topnav">
@@ -55,6 +63,8 @@ export default function Home() {
       <h2 className="text-2xl font-bold title text-center">
         <button onClick={Button4}>Dispense NFT</button>
       </h2>
+
+      <p> {userAddress} </p>
 
     </main>
   );

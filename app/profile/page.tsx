@@ -26,11 +26,16 @@ import { Button1, Button2, Button4 } from './buttons';
 
 
 export default function Home() {
-  console.log('entered nft page')
+  // console.log('entered nft page')
+  // const address = userSession.loadUserData();
+  // console.log(address);
 
   useEffect(() => {
     console.log('loading nfts...')
-    load_nfts();
+    if (userSession.isUserSignedIn()) {
+      load_nfts();
+    }
+    // load_nfts();
   }, []);
 
   return (
