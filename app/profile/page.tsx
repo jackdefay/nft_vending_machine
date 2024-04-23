@@ -45,7 +45,6 @@ export default function Home() {
           <ul> {/* Should replace this with a Link later for prefetching */}
             <li><a href="/">Home</a></li>
             <li><a className="active" href="/profile">My NFTs</a></li>
-            <li><a href="#contact">Contact</a></li>
             <li><a href="#about">About</a></li>
           </ul>
         </div>

@@ -38,7 +38,6 @@ export default function Home() {
           <ul> {/* Should replace this with a Link later for prefetching */}
             <li><a className="active" href="/">Home</a></li>
             <li><a href="/profile">My NFTs</a></li>
-            <li><a href="#contact">Contact</a></li>
             <li><a href="#about">About</a></li>
           </ul>
         </div>
@@ -62,10 +61,10 @@ export default function Home() {
         <h2 className="text-2xl font-bold title">Steps to run:</h2>
         <ol type="1" className="list-decimal">
           <li>Download Chrome Stacks wallet extension Leather Wallet from <a href="https://leather.io/">leather.io</a> and make an account</li>
-          <li>Visit the stacks faucet on the <a href="https://explorer.hiro.so/sandbox/deploy?chain=testnet">Hiro Stacks Sandbox</a>, make sure it is set to "testnet"</li>
+          <li>Visit the stacks faucet on the <a href="https://explorer.hiro.so/sandbox/deploy?chain=testnet">Hiro Stacks Sandbox</a>, make sure it is set to *testnet*</li>
           <li>Click *Connect Wallet* to connect your Stacks wallet</li>
           <li>Click *Dispense NFT* to claim an NFT</li>
-          <li>Visit the "My NFTs" page to view your NFTs</li>
+          <li>Visit the *My NFTs* page to view your NFTs</li>
         </ol>
       </div>
 
