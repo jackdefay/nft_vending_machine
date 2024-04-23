@@ -63,7 +63,7 @@ export async function load_nfts() {
       document.getElementById("nfts")!.innerHTML += "Asset: " + value.tx_id + "\n";
     }
 
-    render_nfts(values);
+    render_nfts2(values);
   
 }
   
@@ -82,4 +82,21 @@ export function render_nfts(id_list: string[]) {
     // document.getElementById("img1")!.src = urls[0];
   
     return true;
+}
+
+export function render_nfts2(id_list: string[]) {
+  let j = 0;
+  for (let i = 1; i < id_list.length; i++) { 
+    if (i <= 10){
+      j = i;
+    }
+    else {
+      j = i - 10;
+    }
+    let element = '<img src="/charlie{index}.jpg" style="width: 30%;"/>';
+    let elementString = element.replaceAll('{index}', j.toString());
+    document.getElementById("nft_images")!.innerHTML += elementString;
+  }
+
+  return true;
 }

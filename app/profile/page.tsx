@@ -31,7 +31,7 @@ export default function Home() {
   // console.log(address);
 
   useEffect(() => {
-    console.log('loading nfts...')
+    // console.log('loading nfts...')
     if (userSession.isUserSignedIn()) {
       load_nfts();
     }
@@ -62,8 +62,7 @@ export default function Home() {
 
       <p id='nfts'></p>
 
-      <div id='nft_images'>
-        <img id='img1' src=''></img>
+      <div id='nft_images' className="gallery">
       </div>
 
     </main>
