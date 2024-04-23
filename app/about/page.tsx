@@ -36,9 +36,9 @@ export default function Home() {
       <div className="topnav">
         <div className="topnav-left">
           <ul> {/* Should replace this with a Link later for prefetching */}
-            <li><a className="active" href="/">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/profile">My NFTs</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a className="active" href="/about">About</a></li>
           </ul>
         </div>
 
@@ -53,7 +53,7 @@ export default function Home() {
       <h1 className="text-5xl font-bold title text-center">NFT Vending Machine</h1>
 
       <div>
-        <h2 className="text-2xl font-bold title">About</h2>
+        <h1 className="text-3xl font-bold title">About</h1>
         <p>
             This is a simple NFT vending machine. 
             You can connect your wallet and dispense an NFT. 
