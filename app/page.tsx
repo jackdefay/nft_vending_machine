@@ -57,6 +57,10 @@ export default function Home() {
         <button onClick={Button4}>Dispense NFT</button>
       </h2>
 
+      <div className="flex flex-row flex-wrap justify-center">
+        <p></p>
+      </div>
+
     </main>
   );
 }

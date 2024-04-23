@@ -78,11 +78,10 @@ body {
 
 div.gallery {
   margin: 5px;
-  border: 1px solid #ccc;
   float: center;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   overflow: scroll;
 }
 
