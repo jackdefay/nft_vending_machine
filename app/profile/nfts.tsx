@@ -86,7 +86,7 @@ export function render_nfts(id_list: string[]) {
 
 export function render_nfts2(id_list: string[]) {
   let j = 0;
-  for (let i = 1; i < id_list.length; i++) { 
+  for (let i = 1; i < id_list.length+1; i++) { 
     if (i <= 10){
       j = i;
     }
