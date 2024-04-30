@@ -31,7 +31,7 @@ export function Button1(){
   
   export function Button2(){
     // const pick = stringUtf8CV('Alice');
-  
+    
     return (
       openContractCall({
       network: new StacksTestnet(),

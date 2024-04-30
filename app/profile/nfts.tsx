@@ -93,7 +93,7 @@ export function render_nfts2(id_list: string[]) {
     else {
       j = i - 10;
     }
-    let element = '<img src="/charlie{index}.jpg" style="width: 30%;"/>';
+    let element = '<img src="/nft/charlie{index}.jpg" style="width: 30%;"/>';
     let elementString = element.replaceAll('{index}', j.toString());
     document.getElementById("nft_images")!.innerHTML += elementString;
   }
